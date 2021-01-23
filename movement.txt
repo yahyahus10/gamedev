@@ -1,0 +1,59 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class player : MonoBehaviour
+{
+    
+  
+    private Rigidbody rigidBodyComponent;
+    float speed = 15.0f; //speed of boat
+    float rspeed = 15.0f; //rotation speed
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        rigidBodyComponent = GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+        
+
+        ///rotation to the right
+        if (Input.GetKey("r"))
+        {
+            transform.Rotate(0.0f, rspeed * Time.deltaTime,0.0f);
+
+        }
+        ///rotate to the left(anticlockwise)
+        if(Input.GetKey("e"))
+        {
+            transform.Rotate(0.0f, -rspeed * Time.deltaTime,0.0f);
+        }
+        ///go forward
+        if (Input.GetKey("up"))
+        {
+            rigidBodyComponent.transform.Translate(0, 0, speed * Time.deltaTime); ;
+        }
+        ///go backward
+        if (Input.GetKey("down"))
+        {
+            rigidBodyComponent.transform.Translate(0, 0,-speed * Time.deltaTime);
+        }
+        ///go the the right
+        if (Input.GetKey("right"))
+        {
+            rigidBodyComponent.transform.Translate(speed* Time.deltaTime, 0,0);
+        }
+        ///go to the left
+        if (Input.GetKey("left"))
+        {
+            rigidBodyComponent.transform.Translate(-speed * Time.deltaTime, 0, 0);
+        }
+    }
+
+    
+}
